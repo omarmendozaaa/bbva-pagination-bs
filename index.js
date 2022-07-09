@@ -1,0 +1,1 @@
+export { BbvaPaginationBs } from './src/BbvaPaginationBs.js';
