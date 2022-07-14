@@ -51,6 +51,7 @@ export class BbvaPaginationBs extends LitElement {
   _clickPage(page) {
     if(page >= 1 && page <= 500){
       this.selectPage = page;
+      this._paginationEvent(page);
     }
     this.renderPage = [];
     if(this.selectPage > this.visualPages - 2 + this.initialPage) {
@@ -88,6 +89,15 @@ export class BbvaPaginationBs extends LitElement {
     ];
   }
 
+  _paginationEvent(item){
+    this.dispatchEvent(
+      new CustomEvent('page-event', {
+        bubbles: true,
+        composed: true,
+        detail: item
+      })
+    );
+  }
   // Define a template
   render() {
     return html`
